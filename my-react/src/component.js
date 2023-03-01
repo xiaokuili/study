@@ -1,9 +1,13 @@
 import React from "react";
+import { useState } from "react";
 
 function Child() {
+  const [name, setname] = useState("child-dog");
   return (
     <div>
       <h2>child</h2>
+      <button onClick={() => setname("child-cat")}>change name</button>
+      <div>{name}</div>
     </div>
   );
 }
