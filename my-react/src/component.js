@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
+import MyContext from "./context";
 
 function Child() {
+  const value = React.useContext(MyContext);
   const [name, setname] = useState("child-dog");
   useEffect(() => {
     document.title = name;
@@ -11,7 +13,9 @@ function Child() {
       <h2>child</h2>
       <button onClick={() => setname("child-cat")}>change name</button>
 
-      <div>{name}</div>
+      <div>
+        {name} {value}
+      </div>
     </div>
   );
 }
