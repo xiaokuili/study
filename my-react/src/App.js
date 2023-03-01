@@ -5,8 +5,10 @@ import Father from "./component";
 import { Child } from "./component";
 import MyContext from "./context";
 function App() {
+  const [context, setContext] = React.useState("hello");
+
   return (
-    <MyContext.Provider value="hello">
+    <MyContext.Provider value={{ context, setContext }}>
       <div className="App">
         <Father>
           <Child />

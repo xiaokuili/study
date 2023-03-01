@@ -1,20 +1,25 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import MyContext from "./context";
+import { useContext } from "react";
 
 function Child() {
-  const value = React.useContext(MyContext);
+  const { context, setContext } = useContext(MyContext);
   const [name, setname] = useState("child-dog");
+  const handle = () => {
+    setname("child-cat");
+    setContext("hello world");
+  };
   useEffect(() => {
     document.title = name;
   }, [name]);
   return (
     <div>
       <h2>child</h2>
-      <button onClick={() => setname("child-cat")}>change name</button>
+      <button onClick={handle}>change name</button>
 
       <div>
-        {name} {value}
+        {name} {context}
       </div>
     </div>
   );
